@@ -1,4 +1,4 @@
-const target = prompt('Please enter a date: \nFor example: "Jan 1 2021"');
+const target = prompt('Please enter a future date: \nFor example: "Jan 1 2021"');
 
 var app = new Vue({
   el: '#app',
