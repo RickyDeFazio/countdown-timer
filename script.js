@@ -1,30 +1,36 @@
 var app = new Vue({
   el: '#app',
   data: {
-    days: '00',
-    hours: '00',
-    minutes: '00',
-    seconds: '00',
-    target: 'Jan 1 2021'
+    now: new Date(),
+    then: new Date('Jan 1 2021')
   },
   methods: {
     countdown() {
-      const then = new Date(this.target)
-      const now = new Date();
-      let totalSeconds = (then - now) / 1000;
-
-      const daysRemaining = Math.floor(totalSeconds / 3600 / 24);
-      const hoursRemaining = Math.floor(totalSeconds / 3600) % 24;
-      const minutesRemaining = Math.floor(totalSeconds / 60) % 60;
-      const secondsRemaining = Math.floor(totalSeconds) % 60;
-
-      this.days = this.formatTime(daysRemaining);
-      this.hours = this.formatTime(hoursRemaining);
-      this.minutes = this.formatTime(minutesRemaining);
-      this.seconds = this.formatTime(secondsRemaining);
+      this.now = new Date();
     },
     formatTime(time) {
       return time < 10 ? `0${time}` : time;
+    }
+  },
+  computed: {
+    totalSeconds(){
+      return (this.then - this.now) / 1000;
+    },
+    days() {
+      const daysRemaining = Math.floor(this.totalSeconds / 3600 / 24);
+      return this.formatTime(daysRemaining);
+    },
+    hours() {
+      const hoursRemaining = Math.floor(this.totalSeconds / 3600) % 24;
+      return this.formatTime(hoursRemaining);
+    },
+    minutes() {
+      const minutesRemaining = Math.floor(this.totalSeconds / 60) % 60;
+      return this.formatTime(minutesRemaining);
+    },
+    seconds(){
+      const secondsRemaining = Math.floor(this.totalSeconds) % 60;
+      return this.formatTime(secondsRemaining);
     }
   },
   mounted() {
