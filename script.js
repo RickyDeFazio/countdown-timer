@@ -1,8 +1,10 @@
+const target = prompt('Please enter a date: \nFor example: "Jan 1 2021"');
+
 var app = new Vue({
   el: '#app',
   data: {
     now: new Date(),
-    then: new Date('Jan 1 2021')
+    then: new Date(target)
   },
   methods: {
     countdown() {
