@@ -1,10 +1,8 @@
-const target = prompt('Please enter a future date: \nFor example: "Jan 1 2021"');
-
 var app = new Vue({
   el: '#app',
   data: {
     now: new Date(),
-    then: new Date(target)
+    then: new Date(localStorage.getItem('then'))
   },
   methods: {
     countdown() {
@@ -36,6 +34,11 @@ var app = new Vue({
     }
   },
   mounted() {
+    if (!localStorage.getItem('then')) {
+      const target = prompt('Please enter a future date in the format: MMM DD YYYY \nFor example: "Jan 1 2021"');
+      this.then = new Date(target);
+      localStorage.setItem('then', target);
+    }
     setInterval(this.countdown, 1000);
   }
 });
