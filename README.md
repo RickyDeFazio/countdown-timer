@@ -1,5 +1,9 @@
 # countdown-timer
 
+A countdown timer to showcase the days, hours, minutes, and seconds until the desired part of your timeline arrives.
+
+Created for fun, and to begin experimenting with the Vue.js framework.
+
 ### TODO:
 
 - [x] Utilize local storage so that countdown can persist for users beyond a single session
